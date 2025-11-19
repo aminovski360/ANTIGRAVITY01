@@ -1,0 +1,148 @@
+.app {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--color-bg-primary);
+}
+
+.app-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(320px, 1fr) minmax(400px, 1.5fr) minmax(320px, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+.panel {
+    height: 100%;
+    overflow: hidden;
+}
+
+.lesson-panel-wrapper {
+    animation: fadeIn var(--transition-slow) ease-out;
+}
+
+.editor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    animation: fadeIn var(--transition-slow) ease-out 0.1s backwards;
+}
+
+.editor-panel>*:first-child {
+    flex: 1;
+    min-height: 0;
+}
+
+.console-panel {
+    animation: fadeIn var(--transition-slow) ease-out 0.2s backwards;
+}
+
+.editor-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-border-focus);
+    color: var(--color-text-primary);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-icon {
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-spinner {
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .app-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+    }
+
+    .lesson-panel-wrapper {
+        max-height: 40vh;
+    }
+
+    .console-panel {
+        max-height: 30vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,115 @@
+.console {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.console-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.console-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.console-icon {
+    font-size: 1rem;
+}
+
+.console-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.75rem;
+    color: var(--color-accent-primary);
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent-primary);
+    border-radius: 50%;
+}
+
+.console-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-md);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.console-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--color-text-muted);
+    text-align: center;
+    gap: var(--spacing-md);
+}
+
+.empty-icon {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+.console-empty p {
+    font-size: 0.9rem;
+    font-family: var(--font-primary);
+}
+
+.console-output {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.console-line {
+    padding: 0.25rem 0;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    display: flex;
+    align-items: flex-start;
+}
+
+.console-line.output {
+    color: var(--color-text-primary);
+}
+
+.console-line.error {
+    color: var(--color-accent-error);
+    background: rgba(239, 68, 68, 0.05);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-accent-error);
+}
+
+.console-line.success {
+    color: var(--color-accent-success);
+}
+
+.line-prefix {
+    margin-right: var(--spacing-xs);
+    flex-shrink: 0;
+}
+
+.line-content {
+    flex: 1;
+}
