@@ -17,6 +17,7 @@ function App() {
         const saved = localStorage.getItem('completedLessons');
         return saved ? JSON.parse(saved) : [];
     });
+    const [mobileTab, setMobileTab] = useState('lesson'); // Mobile tab state
 
     // Load Pyodide on mount
     useEffect(() => {
@@ -127,6 +128,7 @@ function App() {
                 {theme === 'dark' ? '☀️' : '🌙'}
             </button>
 
+            {/* Desktop Layout */}
             <div className="app-container">
                 <div className="panel lesson-panel-wrapper">
                     <LessonPanel
@@ -176,6 +178,95 @@ function App() {
 
                 <div className="panel console-panel">
                     <Console outputs={outputs} isRunning={isRunning} />
+                </div>
+            </div>
+
+            {/* Mobile Tab Layout */}
+            <div className="mobile-tabs">
+                <div className="mobile-tab-nav">
+                    <button
+                        className={`mobile-tab-button ${mobileTab === 'lesson' ? 'active' : ''}`}
+                        onClick={() => setMobileTab('lesson')}
+                    >
+                        <span className="mobile-tab-icon">📚</span>
+                        <span>Lesson</span>
+                    </button>
+                    <button
+                        className={`mobile-tab-button ${mobileTab === 'code' ? 'active' : ''}`}
+                        onClick={() => setMobileTab('code')}
+                    >
+                        <span className="mobile-tab-icon">💻</span>
+                        <span>Code</span>
+                    </button>
+                    <button
+                        className={`mobile-tab-button ${mobileTab === 'output' ? 'active' : ''}`}
+                        onClick={() => setMobileTab('output')}
+                    >
+                        <span className="mobile-tab-icon">📤</span>
+                        <span>Output</span>
+                    </button>
+                </div>
+
+                <div className={`mobile-tab-content ${mobileTab === 'lesson' ? 'active' : ''}`}>
+                    <LessonPanel
+                        lesson={currentLesson}
+                        onLessonChange={(lesson) => {
+                            setCurrentLesson(lesson);
+                            setMobileTab('code'); // Auto-switch to code tab
+                        }}
+                        allLessons={pythonLessons}
+                        onLoadSolution={handleLoadSolution}
+                        completedLessons={completedLessons}
+                    />
+                </div>
+
+                <div className={`mobile-tab-content ${mobileTab === 'code' ? 'active' : ''}`}>
+                    <CodeEditor value={code} onChange={setCode} />
+                    <div className="editor-controls">
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => {
+                                handleRunCode();
+                                setTimeout(() => setMobileTab('output'), 500);
+                            }}
+                            disabled={isRunning || isPyodideLoading}
+                        >
+                            {isRunning ? (
+                                <>
+                                    <span className="btn-spinner animate-spin">⚙️</span>
+                                    Running...
+                                </>
+                            ) : isPyodideLoading ? (
+                                <>
+                                    <span className="btn-spinner animate-spin">⚙️</span>
+                                    Loading...
+                                </>
+                            ) : (
+                                <>
+                                    <span className="btn-icon">▶</span>
+                                    Run
+                                </>
+                            )}
+                        </button>
+                        <button className="btn btn-secondary" onClick={handleResetCode}>
+                            <span className="btn-icon">↻</span>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+
+                <div className={`mobile-tab-content ${mobileTab === 'output' ? 'active' : ''}`}>
+                    <Console outputs={outputs} isRunning={isRunning} />
+                    <div className="editor-controls" style={{ marginTop: '12px' }}>
+                        <button className="btn btn-secondary" onClick={handleClearConsole}>
+                            <span className="btn-icon">🗑️</span>
+                            Clear
+                        </button>
+                        <button className="btn btn-secondary" onClick={() => setMobileTab('code')}>
+                            <span className="btn-icon">💻</span>
+                            Back to Code
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
