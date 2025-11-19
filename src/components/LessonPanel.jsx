@@ -48,9 +48,6 @@ function LessonPanel({ lesson, onLessonChange, allLessons, onLoadSolution, compl
                     <span className="gradient-text">Crewers.ai</span>
                 </h1>
                 <p className="lesson-tagline">learn python with crewers.ai</p>
-                <div className="progress-indicator">
-                    🏆 Progress: {completedLessons.length}/{allLessons.length} ({progressPercent}%)
-                </div>
             </div>
 
             <div className="lesson-selector">
