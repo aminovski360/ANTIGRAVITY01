@@ -15,6 +15,7 @@
   --color-border-focus: rgba(0, 217, 255, 0.6);
   --gradient-primary: linear-gradient(135deg, #00d9ff 0%, #ff006e 100%);
   --gradient-success: linear-gradient(135deg, #00ff88 0%, #00d9ff 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(38, 48, 78, 0.9) 0%, rgba(25, 32, 56, 0.8) 100%);
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 30px rgba(0, 217, 255, 0.4);
@@ -63,6 +64,11 @@ body,
   height: 100%;
   width: 100%;
   overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 body {
@@ -72,8 +78,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  position: relative;
   transition: background 0.3s ease, color 0.3s ease;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
 body::before {
@@ -189,8 +195,8 @@ pre {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -220,7 +226,8 @@ button:disabled {
 }
 
 input,
-textarea {
+textarea,
+select {
   font-family: var(--font-primary);
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
@@ -231,7 +238,8 @@ textarea {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: none;
   border-color: var(--color-border-focus);
   box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.15);
@@ -316,4 +324,13 @@ textarea:focus {
 .theme-toggle:hover {
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 18px;
+  }
 }

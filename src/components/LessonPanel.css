@@ -24,6 +24,18 @@
     border-bottom: 1px solid var(--color-border);
 }
 
+.lesson-tagline {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: 0.5rem 0 0 0;
+}
+
+.lesson-selector {
+    padding: var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border-bottom: 1px solid var(--color-border);
+}
+
 .lesson-selector label {
     display: block;
     font-size: 0.875rem;
@@ -325,4 +337,81 @@
 
 .solution-load-button:hover {
     background: #16a34a;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .lesson-header {
+        padding: 12px 10px;
+    }
+
+    .lesson-brand {
+        font-size: 1.3rem;
+    }
+
+    .lesson-tagline {
+        font-size: 0.75rem;
+    }
+
+    .lesson-selector {
+        padding: 8px 10px;
+    }
+
+    .lesson-content {
+        padding: 12px 10px;
+    }
+
+    .lesson-title {
+        font-size: 1.2rem;
+    }
+
+    .lesson-description {
+        font-size: 0.9rem;
+    }
+
+    .lesson-instructions {
+        font-size: 0.85rem;
+    }
+
+    .markdown-content h3 {
+        font-size: 1.1rem;
+        margin-top: 12px;
+    }
+
+    .markdown-content h4 {
+        font-size: 0.95rem;
+    }
+
+    .markdown-content code {
+        font-size: 0.8rem;
+    }
+
+    .hint-button,
+    .solution-button {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .lesson-header {
+        padding: 10px 8px;
+    }
+
+    .lesson-brand {
+        font-size: 1.1rem;
+    }
+
+    .lesson-content {
+        padding: 10px 8px;
+    }
+
+    .lesson-title {
+        font-size: 1.1rem;
+    }
+
+    .difficulty-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
 }

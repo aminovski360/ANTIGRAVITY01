@@ -128,21 +128,89 @@
     }
 
     .lesson-panel-wrapper {
-        max-height: 40vh;
+        max-height: 35vh;
     }
 
     .console-panel {
-        max-height: 30vh;
+        max-height: 25vh;
     }
 }
 
+/* Mobile - All Components Visible */
 @media (max-width: 768px) {
+    .app {
+        font-size: 14px;
+    }
+
+    .app-container {
+        padding: 6px;
+        gap: 6px;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .lesson-panel-wrapper {
+        max-height: 22vh;
+        min-height: 150px;
+    }
+
+    .editor-panel {
+        gap: 6px;
+        min-height: 280px;
+        max-height: 45vh;
+    }
+
+    .console-panel {
+        max-height: 200px;
+        min-height: 140px;
+    }
+
     .editor-controls {
-        flex-direction: column;
+        flex-direction: row;
+        gap: 4px;
     }
 
     .btn {
-        width: 100%;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        flex: 1;
         justify-content: center;
+    }
+
+    .btn-icon,
+    .btn-spinner {
+        font-size: 0.85rem;
+    }
+}
+
+/* iPhone Compact View */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 4px;
+        gap: 4px;
+    }
+
+    .lesson-panel-wrapper {
+        max-height: 20vh;
+        min-height: 130px;
+    }
+
+    .editor-panel {
+        min-height: 250px;
+        max-height: 42vh;
+    }
+
+    .console-panel {
+        min-height: 120px;
+        max-height: 180px;
+    }
+
+    .btn {
+        padding: 8px;
+        font-size: 0.75rem;
+    }
+
+    .editor-controls {
+        gap: 3px;
     }
 }
